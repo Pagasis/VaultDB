@@ -19,7 +19,7 @@ print('''Welcome to Your Personal Vault
 
 if is_1st_time():
     masterpw = input("Guess this is your first time\nEnter your Master Password:")
-    print("Remember it as you need to provide it everytime you run these program\n")
+    print("Remember it as you will need to provide it everytime you run this program.\n")
     key = Fernet.generate_key()
     add_keys(masterpw,key)
 else:
@@ -32,12 +32,12 @@ else:
         print("Incorrect!")
 
 while True:
-    print("\nAvaiable Tasks:\n(1)See stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of stored Password\n(6)Exit Program\n")
+    print("\nAvaiable Tasks:\n(1)View stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of the stored Password\n(6)Exit Program\n")
 
     task = input("What would you like to do:")
 
     if task == '1':
-        subtask = input("Would you like to see (a)ll stored passwords or of a (s)pecific site (a/s):")
+        subtask = input("Would you like to view (a)ll the stored passwords or of a (s)pecific site (a/s):")
         if subtask == 'a':
             display('a')
         elif subtask == 's':
@@ -46,10 +46,10 @@ while True:
             app = input("Which site's password you want:")
             details = display('s',app=app)
             print(details)
-            copy = input("Would you like to copy passwrd to clipboard(y/n):")
+            copy = input("Would you like to copy password to clipboard(y/n):")
             if copy == 'y':
                 copy2clip(decrypt(details[3].encode(), get_key()))
-                print("Copy successful.\nRemember to clear clipboard after using!")
+                print("Copied!.\nRemember to clear clipboard after using!")
         else:
             print("Invalid Input!")
 
@@ -57,11 +57,11 @@ while True:
         print(f"This is a program generated strong password: {generate_pw()}")
 
     elif task == '3':
-        n = int(input("How many details would you like to add:"))
+        n = int(input("How many details would you like to add: "))
         for i in range(n):
-            app = input("Enter Site/App name:")
-            uname = input("Enter your username:")
-            pw = input("Enter your password for the site:")
+            app = input("Enter Site/App name: ")
+            uname = input("Enter your username: ")
+            pw = input("Enter your password for the site: ")
             pw = encrypt(pw, get_key()).decode()
             add(app,uname,pw)
 
