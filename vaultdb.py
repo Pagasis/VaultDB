@@ -32,7 +32,7 @@ def display(a,app=None):
                 print("Seems your vault is empty")
         elif a == 's':
             # Executing MySQL query
-            cursor.execute(f"select * from vault where Website_or_App = '{app}';")
+            cursor.execute("select * from vault where Website_or_App = '%(app)s';",{'app':app})
             # Display record
             record = cursor.fetchone()
             return record
@@ -44,7 +44,7 @@ def display(a,app=None):
 # Function to add pw to database
 def add(app, uname, pw):
     # Executing MySQL query
-    cursor.execute(f"insert into vault(Website_or_App,UNAME,PASS,Date_Added) values('{app}','{uname}','{pw}','{date.today()}');")
+    cursor.execute("insert into vault(Website_or_App,UNAME,PASS,Date_Added) values(%(app)s,%(uname)s,%(pw)s,%(date)s);",{'app':app,'uname':uname,'pw':pw,'date':date.today()})
     # Commiting changes
     connection.commit()
     del app,uname,pw
@@ -52,7 +52,7 @@ def add(app, uname, pw):
 # Function to remove pw from database
 def remove(app):
     # Executing MySQL query
-    cursor.execute(f"delete from vault where Website_or_App = '{app}';")
+    cursor.execute("delete from vault where Website_or_App = %(app)s;",{'app':app})
     # Commiting changes
     connection.commit()
     del app
@@ -60,7 +60,7 @@ def remove(app):
 # Function to update pw
 def update(app,pw):
     # Executing MySQL query
-    cursor.execute(f"update vault set PASS = '{pw}' where Website_or_App = '{app}';")
+    cursor.execute("update vault set PASS = %(pw)s where Website_or_App = %(app)s;",{'pw':pw,'app':app})
     # Commiting changes
     connection.commit()
     del app,pw
