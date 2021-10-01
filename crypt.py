@@ -82,7 +82,7 @@ def encrypt(text, key):
         return encrypted_text
     # Error message if any
     except Exception as e:
-        print(f"Error occured:{e}\nProcess unsuccessful")
+        print(f"Error occured:{e}\nProcess failed!")
 
 # Decrypting the text
 def decrypt(text, key):
@@ -96,4 +96,4 @@ def decrypt(text, key):
         return decrypted_text
     # Error message if any
     except Exception as e:
-        print(f"Error occured:{e}\nProcess unsuccessful")
+        print(f"Error occured:{e}\nProcess failed!")
