@@ -5,8 +5,8 @@ A password manager is a computer program that allows users to store, generate, a
 VaultDB is your personal local CLI password manager.
 
 The program uses **Cryptograghy module** for encryption and decryption of passwords to store.
-**MySQL** to store login details of different sites and apps.
-Also **Pyperclip mudule** to copy passwords to clipboard by which you wont need to type, and just paste.
+And it uses **MySQL** to store login details of different sites and apps.
+Also it uses **Pyperclip mudule** to copy passwords to clipboard by which you wont need to type, and just paste.
 
 [![CodeFactor](https://www.codefactor.io/repository/github/pagasis/vaultdb/badge)](https://www.codefactor.io/repository/github/pagasis/vaultdb)
 ![Lines of code](https://img.shields.io/tokei/lines/github/pagasis/VaultDB?color=Green)
