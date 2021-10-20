@@ -1,6 +1,7 @@
 from cryptography.fernet import Fernet
 from crypt import *
-from vaultdb import *
+from Create_DB import create_database_and_password
+
 
 print('''Welcome to Your Personal Vault
        /#/#/#\#\#\\
@@ -22,6 +23,7 @@ if is_1st_time():
     print("Remember it as you will need to provide it everytime you run this program.\n")
     key = Fernet.generate_key()
     add_keys(masterpw,key)
+    create_database_and_password()
 else:
     while True:
         masterpw = input("Enter your Master Password:")
@@ -30,6 +32,9 @@ else:
             del masterpw,stored_masterpw
             break
         print("Incorrect!")
+
+#Dont change position of this import statemnt . It wont work without it being exactly here
+from vaultdb import *
 
 while True:
     print("\nAvaiable Tasks:\n(1)View stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of the stored Password\n(6)Exit Program\n")
