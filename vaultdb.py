@@ -1,10 +1,17 @@
 # Importing MySQL connector
-import mysql.connector as connecter
+import mysql.connector as connector
 # Importing date function
 from datetime import date
-
+from pickle import load,dump
 # Connecting to database
-connection = connecter.connect(host="localhost",database="vaultdb",user="root",password="")
+
+def get_sql_password():
+    with open('root.key', 'rb') as file:
+        mysql_password = load(file)
+    return(mysql_password)
+
+
+connection = connector.connect(host="localhost",database="vaultdb",user="root",password=get_sql_password())
 
 # Defining cursor
 cursor = connection.cursor()
