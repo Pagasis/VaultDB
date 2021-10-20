@@ -1,3 +1,5 @@
+<img align="right" src="https://github.com/Pagasis/VaultDB/blob/main/vaultdb.png" height="400"/>
+
 # VaultDB
 
 A password manager is a computer program that allows users to store, generate, and manage their passwords for local applications and online services.
