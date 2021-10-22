@@ -18,11 +18,14 @@ print('''Welcome to Your Personal Vault
  -----------------------''')
 
 
+def save_masterpw(masterpw):
+    key = Fernet.generate_key()
+    add_keys(masterpw,key)
+
 if is_1st_time():
     masterpw = input("Guess this is your first time\nEnter your Master Password:")
     print("Remember it as you will need to provide it everytime you run this program.\n")
-    key = Fernet.generate_key()
-    add_keys(masterpw,key)
+    save_masterpw(masterpw)
     create_database_and_password()
 else:
     while True:
@@ -37,7 +40,7 @@ else:
 from vaultdb import *
 
 while True:
-    print("\nAvaiable Tasks:\n(1)View stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of the stored Password\n(6)Exit Program\n")
+    print("\nAvaiable Tasks:\n(1)View stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of the stored Password\n(6)Update master password\n(7)Exit Program\n")
 
     task = input("What would you like to do:")
 
@@ -83,6 +86,13 @@ while True:
         remove(app)
 
     elif task == '6':
+        if is_1st_time():
+            print("You can't reset your master password if you haven't set it yet!")
+        else:
+            masterpw = input("Please enter your new master password: ")
+            save_masterpw(masterpw)
+
+    elif task == '7':
         break
 
     else:
