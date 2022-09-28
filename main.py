@@ -1,6 +1,6 @@
 from cryptography.fernet import Fernet
-from crypt import *
-from Create_DB import create_database_and_password
+from funcs.crypt import *
+from database.Create_DB import create_database_and_password
 
 
 print('''Welcome to Your Personal Vault
@@ -37,7 +37,7 @@ else:
         print("Incorrect!")
 
 #Dont change position of this import statemnt . It wont work without it being exactly here
-from vaultdb import *
+from funcs.vaultdb import *
 
 while True:
     print("\nAvaiable Tasks:\n(1)View stored Passwords\n(2)Generate a Strong Password\n(3)Add Password\n(4)Update Password\n(5)Remove one of the stored Password\n(6)Update master password\n(7)Exit Program\n")
